@@ -97,8 +97,6 @@ img, video {
   display: block;
   margin-bottom:0px;
   margin-top:0px;
+  width: 300px;
 
-}
-div {
-  text-align: center;
 }
