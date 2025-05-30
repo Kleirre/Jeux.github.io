@@ -27,8 +27,35 @@ h2 {
 	font-size : 50px;
 }
 
+h3 {
+	margin : 0;
+	padding: 0;
+	text-align: left;
+	color: #eec549;
+	text-decoration: underline;
+	
+}
 
 
+
+h4 {
+	margin : 0;
+	padding: 0;
+	text-align: left;
+	color: #eec549;
+	
+}
+
+p	{
+	margin : 20px;
+	padding: 0;
+	text-align: left;
+	color: white;
+	
+}
+	
+	
+	
 .navigation-container {
             display: flex;
 	        flex-direction : column;
@@ -55,8 +82,8 @@ li {
     text-align: center;
     text-decoration: none;
     border-radius: 5px;
-	 width : 250px;
-	 font-family: FreeMono, monospace;
+	width : 250px;
+	font-family: FreeMono, monospace;
         }
 
      
