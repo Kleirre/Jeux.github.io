@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Jeu du Nombre Mystère</title>
+
+</head>
+
+<body>	
+
+    <script>
+
+
+
+        function main() {
+
+            const maxCoup = 5;
+
+            alert("Bienvenue au jeu du nombre mystère !");
+
+            const nbrMin = parseInt(prompt("Quel est le minimum du nombre mystère ?\nChoix : "));
+
+            const nbrMax = parseInt(prompt("Quel est le maximum du nombre mystère ?\nChoix : "));
+
+
+
+			
+
+            while (true) {
+
+                const mode = prompt("\nDans quel MODE voulez-vous jouer ?\n" +
+
+                                    "1) L'ordinateur choisit le nombre\n" +
+
+                                    "2) L'utilisateur choisit le nombre\n" +
+
+                                    "Choix : ");
+
+                if (mode === "1") {
+
+                    modeUn(nbrMin, nbrMax, maxCoup);
+
+                } else if (mode === "2") {
+
+                    modeDeux(nbrMin, nbrMax);
+
+                } else {
+
+                    alert("Veuillez choisir un mode valide (1 ou 2).");
+
+                }
+
+            }
+
+        }
+
+
+
+        function modeUn(nbrMin, nbrMax, maxCoup) {
+
+            const nbrMystere = Math.floor(Math.random() * (nbrMax - nbrMin + 1)) + nbrMin;
+
+            let trouve = false;
+
+            let coup = 0;
+
+
+
+            alert("\nMode 1 : Devinez le nombre choisi par l'ordinateur.");
+
+            while (!trouve) {
+
+                coup++;
+
+                if (coup > maxCoup) {
+
+                    alert("Nombre de tours limite dépassé ! Vous avez perdu !");
+
+                    break;
+
+                }
+
+
+
+                const nombreStr = prompt(`Essai ${coup} - Entrez un nombre entre ${nbrMin} et ${nbrMax} :`);
+
+                const nombre = parseInt(nombreStr);
+
+
+
+                if (isNaN(nombre)) {
+
+                    alert("Veuillez entrer un nombre entier valide.");
+
+                    continue;
+
+                }
+
+
+
+                if (nombre < nbrMin || nombre > nbrMax) {
+
+                    alert(`Le nombre doit être compris entre ${nbrMin} et ${nbrMax}.`);
+
+                    continue;
+
+                }
+
+
+
+                if (nbrMystere > nombre) {
+
+                    alert("C'est plus grand !");
+
+                } else if (nbrMystere < nombre) {
+
+                    alert("C'est plus petit !");
+
+                } else {
+
+                    alert(`Bravo ! Vous avez trouvé en ${coup} coups !`);
+
+                    trouve = true;
+
+                }
+
+            }
+
+        }
+
+
+
+        function modeDeux(nbrMinInit, nbrMaxInit) {
+
+            let nbrMin = nbrMinInit;
+
+            let nbrMax = nbrMaxInit;
+
+            let trouve = false;
+
+            let coup = 0;
+
+
+
+            alert("Mode 2 : Pensez à un nombre.");
+
+            while (!trouve) {
+
+                coup++;
+
+                const nombre = Math.floor((nbrMin + nbrMax) / 2);
+
+                const reponse = prompt(`Je tente ma chance... ${nombre} !\nVotre réponse :\n` +
+
+                                       "1) C'est ça !\n2) Plus petit\n3) Plus grand\nChoix :");
+
+
+
+                if (reponse === "1") {
+
+                    alert(`L'ordinateur a trouvé en ${coup} coups !`);
+
+                    trouve = true;
+
+                } else if (reponse === "2") {
+
+                    nbrMax = nombre - 1;
+
+                } else if (reponse === "3") {
+
+                    nbrMin = nombre + 1;
+
+                } else {
+
+                    alert("Erreur ! Réponse non gérée.");
+
+                }
+
+
+
+                if (nbrMin > nbrMax) {
+
+                    alert("Vous avez triché ! Le jeu s'arrête.");
+
+                    break;
+
+                }
+
+            }
+
+        }
+
+		
+
+		function verification(choix, message = "Entrée invalide, veuillez entrer un nombre:") {
+
+			while (!/^\d+$/.test(choix)) {
+
+				choix = prompt(message);
+
+			}
+
+			return parseInt(choix, 10);
+
+		}
+
+
+
+        main();
+
+    </script>
+
+</body>
+
+</html>
+
+
